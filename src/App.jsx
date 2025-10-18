@@ -1,7 +1,21 @@
-import React from 'react'
+import {useState, useEffect} from 'react'
 import FAQList from './components/FAQList'
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(false)
+
+  useEffect(() => {
+      if (darkMode) {
+          document.documentElement.classList.add ('dark')
+      } else {
+          document.documentElement.classList.remove ('dark')
+      }
+  }, [darkMode])
+      
+  const toggleDarkMode = () => {
+      setDarkMode(!darkMode)
+  }
+
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-50 via-gray-100 to-gray-50'>
       <div className='container mx-auto py-12'>
