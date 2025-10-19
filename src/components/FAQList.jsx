@@ -9,13 +9,13 @@ const FAQList = ({toggleDarkMode, darkMode}) => {
     const toggleItem = (id) => {
         if(expandAll) {
             setExpandAll(false);
-            setOpenId((prevId) => {
-                if(prevId === id) {
-                    return null;
-                }
-                return id
-            })
         }
+        setOpenId((prevId) => {
+            if(prevId === id) {
+                return null;
+            }
+            return id
+        })
     }
 
     const toggleExpandAll = () => {
