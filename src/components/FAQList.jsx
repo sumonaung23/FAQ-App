@@ -1,7 +1,28 @@
+import { useState } from 'react';
 import FAQItem from './FAQItem';
 import faqData from '../data/faqData'
 
 const FAQList = ({toggleDarkMode, darkMode}) => {
+    const [openId, setOpenId] = useState(null);
+    const [expandAll, setExpandAll] = useState(false);
+
+    const toggleItem = (id) => {
+        if(expandAll) {
+            setExpandAll(false);
+            setOpenId((prevId) => {
+                if(prevId === id) {
+                    return null;
+                }
+                return id
+            })
+        }
+    }
+
+    const toggleExpandAll = () => {
+        setExpandAll((prev) => !prev)
+        setOpenId(null)
+    }
+
     return (
         <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
             <div className="flex flex-column sm:flex-row justify-between items-center mb-8 gap-4">
@@ -20,7 +41,7 @@ const FAQList = ({toggleDarkMode, darkMode}) => {
 
             <div className='bg-white/80 dark:bg-gray-800/80 rounded-xl shadow-lg border border-indigo-100/50 dark:border-indigo-900/30 overflow-hidden transition-all duration-300'>
                 {faqData.map((item) => (
-                    <FAQItem key={item.id} item={item} />
+                    <FAQItem key={item.id} item={item} onClick={toggleItem} isOpen = {expandAll || openId === item.id} />
                 ))}
             </div>
         </div>
