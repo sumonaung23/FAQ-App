@@ -15,7 +15,7 @@ const FAQItem = ({item, onClick, isOpen}) => {
                 </div>
             </button>
 
-            <div className="overflow-hidden" 
+            <div className="overflow-hidden transition-all duration-300" 
                 id={`answer-${item.id}`} ref={answerRef} 
                 style={{maxHeight: isOpen ? answerRef.current?.scrollHeight : 0, opacity: isOpen ? 1 : 0}}>
                 <div className="p-4 pt-0 pb-5 text-gray-500 dark:text-gray-300">
