@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FAQItem from './FAQItem';
 import faqData from '../data/faqData'
 
@@ -22,6 +22,21 @@ const FAQList = ({toggleDarkMode, darkMode}) => {
         setExpandAll((prev) => !prev)
         setOpenId(null)
     }
+
+    useEffect (() => {
+        if (openId && typeof (window !== 'undefined')) {
+            setTimeout(() => {
+                const element = document.getElementById(`faq-item-${openId}`)
+            }, 100);
+
+            if(element){
+                element.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            }
+        }
+    }, [openId])
 
     return (
         <div className='max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12'>
