@@ -10,8 +10,8 @@ const FAQItem = ({item, onClick, isOpen}) => {
 
                 <span className='text-lg font-medium pr-6'>{item.question}</span>
 
-                <div className="flex-shrink-0 flex items-center justify-center w-8 min-w-8 aspect-square rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300">
-                    <i className='bx bx-plus text-gray-500 dark:text-gray-400'></i>
+                <div className={`flex-shrink-0 flex items-center justify-center w-8 min-w-8 aspect-square rounded-full ${isOpen ? "bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-500 dark:to-purple-500 shadow-md" : "bg-gray-200 dark:bg-gray-700"}`}>
+                    <i className={`bx ${isOpen ? "bx-minus" : "bx-plus"} ${isOpen ? "text-white" : "text-gray-500 dark:text-gray-400"}`}></i>
                 </div>
             </button>
 
