@@ -24,17 +24,16 @@ const FAQList = ({toggleDarkMode, darkMode}) => {
     }
 
     useEffect (() => {
-        if (openId && typeof (window !== 'undefined')) {
+        if (openId && typeof window !== 'undefined') {
             setTimeout(() => {
                 const element = document.getElementById(`faq-item-${openId}`)
+                if(element){
+                    element.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    })
+                }
             }, 100);
-
-            if(element){
-                element.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                })
-            }
         }
     }, [openId])
 
